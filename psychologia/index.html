@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Psychologia - Blog o Psychologii i Neuronauce</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f6fa;color:#222}
+header{background:linear-gradient(135deg,#1a237e,#283593);color:#fff}
+.hi{max-width:1100px;margin:0 auto;padding:30px 20px}
+.ht{font-size:1.8rem;font-weight:700}
+nav{background:#283593;padding:0 20px}
+.ni{max-width:1100px;margin:0 auto;display:flex}
+nav a{color:#fff;text-decoration:none;padding:14px 20px;display:block}
+nav a:hover{background:#1a237e}
+.main{max-width:1100px;margin:40px auto;padding:0 20px}
+h1{font-size:1.8rem;color:#1a237e;margin-bottom:8px}
+.desc{color:#555;margin-bottom:30px;font-size:1rem;line-height:1.6}
+.search-bar{width:100%;padding:12px 18px;font-size:1rem;border:2px solid #c5cae9;border-radius:8px;margin-bottom:30px}
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pc{background:#fff;border-radius:10px;padding:20px;border:1px solid #e0e0e0;text-decoration:none;color:#222;display:block;transition:box-shadow .2s}
+.pc:hover{box-shadow:0 4px 16px rgba(26,35,126,.12)}
+.pc h3{font-size:.98rem;color:#1a237e;margin-bottom:8px;line-height:1.4}
+.pc p{font-size:.82rem;color:#777;line-height:1.5}
+.pc .pm{font-size:.78rem;color:#999;margin-top:8px}
+.pn{font-size:.75rem;color:#3949ab;font-weight:600;margin-bottom:6px}
+footer{background:#111;color:#aaa;padding:30px 20px;text-align:center;margin-top:60px}
+footer a{color:#90caf9;text-decoration:none}
+@media(max-width:768px){.post-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="hi"><div class="ht">Blog o Psychologii i Neuronauce</div></div>
+<nav><div class="ni"><a href="../index.html">Strona glowna</a><a href="index.html">Psychologia</a><a href="../neuronauka/index.html">Neuronauka</a></div></nav></header>
+<div class="main">
+<h1>Psychologia</h1>
+<p class="desc">1000 artykulow naukowych z zakresu psychologii autorstwa Dr. Juana Moisesa de la Serny - Doktora Psychologii, Magistra Neurobiologii, Profesora UNIR.</p>
+<input type="text" class="search-bar" id="search" placeholder="Szukaj artykulow..." oninput="filter()">
+<div class="post-grid" id="grid"></div>
+</div>
+<footer><p>Dr. Juan Moises de la Serna | Doktor Psychologii | UNIR | <a href="https://orcid.org/0000-0002-8401-8018">ORCID</a></p></footer>
+<script>
+var topics=["Stres i mechanizmy radzenia sobie","Pamiec robocza i uczenie sie","Teoria umyslu","Zaburzenia lekowe","Emocje i regulacja emocjonalna","Motywacja wewnetrzna i zewnetrzna","Osobowosc i temperament","Psychologia spoleczna","Terapia poznawczo-behawioralna","Zaburzenia nastroju","Depresja kliniczna","Fobie i leczenie","Zaufanie i wiez emocjonalna","Psychologia rozwojowa","Inteligencja emocjonalna","Psychologia pozytywna","Samoocena i poczucie wlasnej wartosci","Uzaleznienia i neuropatologia nagrody","Zaburzenia osobowosci","Psychologia sportu","Percepcja i uwaga","Jezyk i myslenie","Rozwoj poznawczy u dzieci","Psychologia kliniczna doroslych","Zaburzenia ze spektrum autyzmu","Psychologia edukacyjna","Psychopatologia","Terapia akceptacji i zaangazowania","Mindfulness w psychologii","Neuropsychologia kliniczna","Psychologia zdrowia","Zaburzenia odzywiania","Trauma i PTSD","Psychologia snu","Procesy decyzyjne","Schizofrenia i psychozy","Zaburzenia obsesyjno-kompulsyjne","Psychologia forenzyczna","Relacje interpersonalne","Samotnosc i izolacja spoleczna","Empatia i altruizm","Agresja i przemoc","Prejudice i uprzedzenia","Konformizm spoleczny","Komunikacja niewerbalna","Samoregulacja i kontrola impulsow","Kreatywnosc i innowacyjnosc","Przywodztwo i wplyw spoleczny","Dobrobyt psychiczny","Resilience i odpornosc psychiczna","Psychologia organizacyjna","Wypalenie zawodowe","Psychologia ekonomiczna","Teorie motywacji","Psychologia ewolucyjna","Psychologia seksualnosci","Psychologia kulturowa","Wzorce przywiazania","Procesy grupowe","Identyfikacja z grupe","Psychologia pomiaru","Metaanaliza w psychologii","Badania podluzne","Metodologia eksperymentalna","Etyka badan psychologicznych","Psychologia miedzykulturowa","Starzenie sie i psychologia doroslych","Psychologia perinatalna","Psychologia cierpienia","Granice psychologiczne","Regulacja stresu","Techniki relaksacyjne","Psychologiczne aspekty bolu","Psychologia narracyjna","Wizerunek ciala","Zaleznosc emocjonalna","Psychologia manipulacji","Wplywy srodowiskowe na zachowanie","Efekt placebo w psychologii","Psychobiologia","Pamiec epizodyczna","Pamiec semantyczna","Amnezja i zapominanie","Pseudopamiec","Wplyw emocji na pamiec","Przetwarzanie informacji","Inteligencja ogolna i specyficzna","Teorie uczenia sie","Behawioryzm i neobehawioryzm","Psychologia gestalt","Psychoanaliza wspolczesna","Psychologia humanistyczna","Terapia egzystencjalna","Podejscie systemowe","Psychologia narracyjna i konstruktywizm","Neurobiologiczne podstawy emocji","Psychofizjologia","Biofeedback i terapia","Psychoneuroimmunologia","Psychoendokrynologia","Zaburzenia snu w kontekscie psychologicznym","Koszmary i sny w psychoterapii","Hipnoza kliniczna","Terapia srodowiskowa","Psychologia komunalna","Psychologia mediow","Cyberpsychologia","Uzaleznienie od internetu","Psychologia gier komputerowych","Wplyw mediow spolecznosciowych na psychike","Psychologia reklamy","Psychologia konsumenta","Podejmowanie decyzji grupowych","Zarzadzanie konfliktami","Negocjacje psychologiczne","Wspolpraca i rywalizacja","Psychologia moralnosci","Teorie sprawiedliwosci","Altruizm ewolucyjny","Psychologia religii","Duchowosci w psychoterapii","Psychologia transosobowa","Swiadomosc i jej poziomy","Teorie swiadomosci","Introspekcja jako metoda"];
+var grid=document.getElementById('grid');
+var cards=[];
+for(var i=1;i<=1000;i++){
+  var t=topics[(i-1)%topics.length]+' ('+i+')';
+  var h='<a href="post-psych-'+i+'.html" class="pc" data-title="'+t.toLowerCase()+'"><div class="pn">Artykul #'+i+'</div><h3>'+t+'</h3><p>Artykul naukowy z metodologia, wynikami statystycznymi i bibliografia APA. Format ScholarlyArticle.</p><div class="pm">Dr. Juan Moises de la Serna - UNIR - ORCID: 0000-0002-8401-8018</div></a>';
+  cards.push(h);
+  grid.innerHTML+=h;
+}
+function filter(){
+  var q=document.getElementById('search').value.toLowerCase();
+  var items=grid.querySelectorAll('.pc');
+  items.forEach(function(el){el.style.display=el.dataset.title.includes(q)?'':'none'});
+}
+</script>
+</body></html>
