@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Neuronauka - Blog o Psychologii i Neuronauce</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#f5f6fa;color:#222}
+header{background:linear-gradient(135deg,#1a237e,#283593);color:#fff}
+.hi{max-width:1100px;margin:0 auto;padding:30px 20px}
+.ht{font-size:1.8rem;font-weight:700}
+nav{background:#283593;padding:0 20px}
+.ni{max-width:1100px;margin:0 auto;display:flex}
+nav a{color:#fff;text-decoration:none;padding:14px 20px;display:block}
+nav a:hover{background:#1a237e}
+.main{max-width:1100px;margin:40px auto;padding:0 20px}
+h1{font-size:1.8rem;color:#1a237e;margin-bottom:8px}
+.desc{color:#555;margin-bottom:30px;font-size:1rem;line-height:1.6}
+.search-bar{width:100%;padding:12px 18px;font-size:1rem;border:2px solid #c5cae9;border-radius:8px;margin-bottom:30px}
+.post-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pc{background:#fff;border-radius:10px;padding:20px;border:1px solid #e0e0e0;text-decoration:none;color:#222;display:block;transition:box-shadow .2s}
+.pc:hover{box-shadow:0 4px 16px rgba(26,35,126,.12)}
+.pc h3{font-size:.98rem;color:#1a237e;margin-bottom:8px;line-height:1.4}
+.pc p{font-size:.82rem;color:#777;line-height:1.5}
+.pc .pm{font-size:.78rem;color:#999;margin-top:8px}
+.pn{font-size:.75rem;color:#3949ab;font-weight:600;margin-bottom:6px}
+footer{background:#111;color:#aaa;padding:30px 20px;text-align:center;margin-top:60px}
+footer a{color:#90caf9;text-decoration:none}
+@media(max-width:768px){.post-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="hi"><div class="ht">Blog o Psychologii i Neuronauce</div></div>
+<nav><div class="ni"><a href="../index.html">Strona glowna</a><a href="../psychologia/index.html">Psychologia</a><a href="index.html">Neuronauka</a></div></nav></header>
+<div class="main">
+<h1>Neuronauka</h1>
+<p class="desc">1000 artykulow naukowych z zakresu neuronauki autorstwa Dr. Juana Moisesa de la Serny - Doktora Psychologii, Magistra Neurobiologii, Profesora UNIR.</p>
+<input type="text" class="search-bar" id="search" placeholder="Szukaj artykulow..." oninput="filter()">
+<div class="post-grid" id="grid"></div>
+</div>
+<footer><p>Dr. Juan Moises de la Serna | Doktor Psychologii | UNIR | <a href="https://orcid.org/0000-0002-8401-8018">ORCID</a></p></footer>
+<script>
+var topics=["Neuroplastycznosc mozgu","Funkcje wykonawcze kory czolowej","Uklad limbiczny i emocje","Neuroprzekazniki i synapsy","Neuroobrazowanie fMRI","Kora przedczolowa i decyzje","Hipokamp i pamiec dlugotrwala","Rytmy dobowe mozgu","Neurogeneza u doroslych","Synaptogeneza i uczenie sie","Neurologia behawioralna","Podstawy neuroanatomii","Kora mozgowa i obszary funkcjonalne","Aksony i mielina","Potencjal czynnosciowy","Sieci neuronowe i obliczenia","Osie HPA i stres","Dopamina i nagroda","Serotonina i nastroj","Noradrenalina i uwaga","GABA i hamowanie","Glutaminian i pobudzenie","Receptory cholinergiczne","Neuropeptyd Y","Oksytocyna i wiez spoleczna","Ukl endokanabinoidowy","Oligodendrocyty i myielinizacja","Astrocyty i wsparcie neuronalne","Mikroglia i neuroimmunologia","Bariery krew-mozg","Choroby neurodegeneracyjne","Choroba Alzheimera","Choroba Parkinsona","Stwardnienie rozsiane","ALS i neurony ruchowe","Epilepsja i drgawki","Urazy mozgu","Rehabilitacja neurologiczna","Geny i neuropsychiatria","Neuroepigenetyka","Neurorozwoj plodu","Dojrzewanie mozgu w dziecinstwie","Mielinizacja w adolescencji","Starzenie sie mozgu","Neuroprotekcja","Neuroendokrynologia","Opioidowy uklad nagrodowy","Narkotyki i mozg","Alkohol i neurobiologia","Uzaleznienie neurobiologiczne","Techniki neuroobrazowania","PET i metabolizm mozgowy","Spektroskopia rezonansu magnetycznego","EEG i fale mozgowe","Magnetoencefalografia","Stymulacja magnetyczna mozgu","Neuromodulacja","Elektryczna stymulacja glebi mozgu","Interfejsy mozg-komputer","Neuroproteza","Neurologia bolu","Przewodzenie bolu w rdzeniu kregowym","Analgetyki centralne","Modulacja bolu","Chroniczny bol i neuroplastycznosc","Neurofizjologia wzroku","Przetwarzanie wzrokowe w korze","Systemy sluchu centralnego","Przetwarzanie wechowe","Integracja multisensoryczna","Ruchy dowolne i kontrola motoryczna","Mozdzek i koordynacja","Zwoje podstawy mozgu","Odruchy i rdzeniowe ukl motoryczne","Neurologia mowy","Emocje a neurobiologia","Strach i cialo migdalowate","Pamiec emocjonalna","Regulacja emocjonalna a kora czolowa","Trauma i hippokamp","Teorie swiadomosci neurologicznej","Korelatow neuronalne swiadomosci","Anestezja i swiadomosc","Stany minimalne swiadomosci","Sen i marzenia senne","Sny REM i konsolidacja pamieci","Bezsennosc i neurobiologia","Narkolepsja i hipokretyna","Apnea i tlenzowanie mozgu","Chronobiologia","Neurologia jezyka","Afazja Broca","Afazja Wernickego","Dysleksja neurobiologiczna","Mowa wewnetrzna","Neurobiologia muzyki","Efekt Mozarta - mit czy fakt","Neuroestetyka","Kreatywnosc mozgowa","Intuicja i podprogowe przetwarzanie","Wzorce aktywnosci domyslnej sieci","Efektywnosc sieci mózgowych","Synchronizacja neuronalna","Osilacje gamma","Uczenie maszynowe a neurobiologia","Neuroetyka","Neurolaw - prawo a mozg","Wolna wola a neuronalne determinizmy","Neurobiologia agresji","Empatia neuronalna","Spoleczna neurobiologia","Teoria umyslu a neurony lustrzane","Neurony lustrzane w autyzmie","Neurobiologia milosci","Zalaczanie spoleczne","Odchudzanie a mozg","Neurobiologia apetytu","Osrodek satiety","Leptin i mozg","Neurobiologia aktywnosci fizycznej"];
+var grid=document.getElementById('grid');
+for(var i=1;i<=1000;i++){
+  var t=topics[(i-1)%topics.length]+' ('+i+')';
+  grid.innerHTML+='<a href="post-neuro-'+i+'.html" class="pc" data-title="'+t.toLowerCase()+'"><div class="pn">Artykul #'+i+'</div><h3>'+t+'</h3><p>Artykul naukowy z metodologia, wynikami statystycznymi i bibliografia APA. Format ScholarlyArticle.</p><div class="pm">Dr. Juan Moises de la Serna - UNIR - ORCID: 0000-0002-8401-8018</div></a>';
+}
+function filter(){
+  var q=document.getElementById('search').value.toLowerCase();
+  var items=grid.querySelectorAll('.pc');
+  items.forEach(function(el){el.style.display=el.dataset.title.includes(q)?'':'none'});
+}
+</script>
+</body></html>
