@@ -1,0 +1,47 @@
+# Site configuration for SEO and Jekyll
+title: Blog o Psychologii i Neuronauce
+description: Naukowy portal w jezyku polskim - Dr. Juan Moises de la Serna
+url: https://juanmoisesd.github.io/science-blog-pol
+baseurl: /science-blog-pol
+
+# Author information
+author:
+  name: Dr. Juan Moises de la Serna
+    email: jmoses@example.com
+
+    # SEO and Meta tags
+    locale: pl_PL
+    language: pl
+    keywords: psychologia, neuronauka, badania naukowe, psychologia kognitywna
+
+    # Jekyll configuration
+    markdown: kramdown
+    theme: jekyll-theme-minimal
+
+    # Plugins
+    plugins:
+      - jekyll-sitemap
+        - jekyll-seo-tag
+
+        # Collections
+        collections:
+          psychologia:
+              output: true
+                  permalink: /psychologia/:name
+                    neuronauka:
+                        output: true
+                            permalink: /neuronauka/:name
+
+                            # Exclude from processing
+                            exclude:
+                              - .gitignore
+                                - README.md
+                                  - Gemfile
+                                    - Gemfile.lock
+                                      - vendor
+
+                                      # Compress CSS
+                                      compress_output: true
+
+                                      # Enable sitemap
+                                      include: [sitemap.xml, robots.txt]
