@@ -1,5 +1,7 @@
 # science-blog-pol
 
+**[Visit the Blog](https://juanmoisesd.github.io/science-blog-pol/)**
+
 
 ## How to Cite
 
