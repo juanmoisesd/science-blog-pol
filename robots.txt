@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /admin/
+Disallow: /private/
+Disallow: *.pdf
+
+Sitemap: https://juanmoisesd.github.io/science-blog-pol/sitemap.xml
